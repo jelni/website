@@ -1,11 +1,17 @@
+:root {
+  --gray-90: #e6e6e6;
+  --gray-50: #808080;
+  --gray-15: #262626;
+}
+
 html {
   height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  color: #e6e6e6;
-  background: #262626;
+  color: var(--gray-90);
+  background: var(--gray-15);
   min-height: 100%;
   margin: unset;
   font-family: "Roboto", sans-serif;
@@ -46,8 +52,8 @@ p {
 
 .progress-bar {
   position: fixed;
-  bottom: 0px;
-  height: 2px;
-  background: #404040;
+  bottom: 0;
+  height: 0.25rem;
+  background: var(--gray-50);
   align-self: stretch;
 }
