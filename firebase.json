@@ -5,6 +5,11 @@
     "trailingSlash": false,
     "redirects": [
       {
+        "source": "/kalkulator",
+        "destination": "/calculator",
+        "type": 301
+      },
+      {
         "source": "/10GB",
         "destination": "https://speed.hetzner.de/10GB.bin",
         "type": 301
