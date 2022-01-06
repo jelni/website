@@ -9,7 +9,7 @@ const charsets = {
 let password = null;
 
 addEventListener("load", () => {
-  let preferencesForm = getById("password-preferences");
+  const preferencesForm = getById("password-preferences");
   preferencesForm.addEventListener("submit", e => {
     e.preventDefault();
     savePreferences();
@@ -71,7 +71,7 @@ function getCharset() {
   return charset.join("");
 }
 
-async function showPassword() {
+function showPassword() {
   getById("password").classList.toggle("password-hidden");
 }
 
