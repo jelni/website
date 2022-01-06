@@ -1,19 +1,16 @@
-let progressBar;
-
 addEventListener("load", () => {
-  progressBar = document.createElement("div");
+  const progressBar = document.createElement("div");
   progressBar.setAttribute("class", "progress-bar");
   document.body.appendChild(progressBar);
+  addEventListener("scroll", () => update(progressBar));
+  addEventListener("resize", () => update(progressBar));
+  update(progressBar);
 });
 
-addEventListener("scroll", () => {
-  const body = document.documentElement;
-  progressBar.style.width =
-    (body.scrollTop / (body.scrollHeight - body.clientHeight)) * 100 + "%";
-});
-
-addEventListener("resize", () => {
+function update(progressBar) {
   const body = document.documentElement;
   progressBar.style.display =
     body.scrollHeight > body.clientHeight ? null : "none";
-});
+  progressBar.style.width =
+    (body.scrollTop / (body.scrollHeight - body.clientHeight)) * 100 + "%";
+}
