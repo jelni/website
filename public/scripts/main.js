@@ -7,12 +7,13 @@ addEventListener("load", () => {
 });
 
 addEventListener("scroll", () => {
-  const e = document.documentElement;
+  const body = document.documentElement;
   progressBar.style.width =
-    (e.scrollTop / (e.scrollHeight - e.clientHeight)) * 100 + "%";
+    (body.scrollTop / (body.scrollHeight - body.clientHeight)) * 100 + "%";
 });
 
 addEventListener("resize", () => {
-  const e = document.documentElement;
-  progressBar.style.display = e.scrollHeight > e.clientHeight ? null : "none";
+  const body = document.documentElement;
+  progressBar.style.display =
+    body.scrollHeight > body.clientHeight ? null : "none";
 });
