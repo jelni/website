@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "public": "public",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/10GB",
+        "destination": "https://speed.hetzner.de/10GB.bin",
+        "type": 301
+      },
+      {
+        "source": "**/.git",
+        "destination": "/10GB",
+        "type": 301
+      },
+      {
+        "source": "**/.env",
+        "destination": "/10GB",
+        "type": 301
+      },
+      {
+        "source": "**/wp-login.php",
+        "destination": "/10GB",
+        "type": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=86400"
+          }
+        ]
+      }
+    ]
+  }
+}

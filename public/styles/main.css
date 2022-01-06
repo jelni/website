@@ -1,0 +1,52 @@
+html {
+  height: 100%;
+}
+
+body {
+  color: #e6e6e6;
+  background: #262626;
+  min-height: 100%;
+  margin: unset;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  hyphens: auto;
+  font-variant-ligatures: none;
+  user-select: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+p {
+  max-width: 80ch;
+  margin-bottom: 0.5em;
+}
+
+.big-text {
+  font-size: 16rem;
+}
+
+.progress-bar {
+  position: fixed;
+  bottom: 0px;
+  height: 2px;
+  background: #404040;
+  align-self: stretch;
+}
