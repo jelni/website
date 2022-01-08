@@ -126,11 +126,7 @@ function displayError(error) {
 function displayPasswordStats(charset) {
   const bitsPerChar = Math.log2(charset.length);
   const entropyBits = Math.floor(password.length * bitsPerChar);
-  for (const [ requirement, category] of [
-    [28, '']
-  ]) {
-
-  }
+  // for (const [requirement, category] of [[28, ""]]) {}
   const text = [
     `Charset size: ${charset.length}`,
     `Password entropy: ${entropyBits} bits`,
