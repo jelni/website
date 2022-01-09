@@ -107,7 +107,7 @@ function displayPassword() {
     if (className) {
       element = document.createElement("span");
       element.className = className;
-      element.innerText = char;
+      element.textContent = char;
     } else {
       element = document.createTextNode(char);
     }
@@ -119,7 +119,7 @@ function displayPassword() {
 function displayError(error) {
   const element = document.createElement("span");
   element.className = "error";
-  element.innerText = error;
+  element.textContent = error;
   getById("password").replaceChildren(element);
 }
 
@@ -127,19 +127,9 @@ function displayPasswordStats(charset) {
   const bitsPerChar = Math.log2(charset.length);
   const entropyBits = Math.floor(password.length * bitsPerChar);
   // for (const [requirement, category] of [[28, ""]]) {}
-  const text = [
-    `Charset size: ${charset.length}`,
-    `Password entropy: ${entropyBits} bits`,
-    `Entropy per character: ≈${bitsPerChar.toFixed(1)} bits`,
-  ];
-
-  getById("password-stats").replaceChildren(
-    ...text.map(t => {
-      const e = document.createElement("span");
-      e.innerText = t;
-      return e;
-    })
-  );
+  getById("charset-size").textContent = charset.length;
+  getById("password-entropy").textContent = entropyBits;
+  getById("entropy-per-char").textContent = bitsPerChar.toFixed(1);
 }
 
 function fixPasswordLength() {
