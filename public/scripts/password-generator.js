@@ -3,8 +3,8 @@ const charsets = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   numbers: "0123456789",
-  punctuation: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
-  space: " ",
+  punctuation: "!@#$%^&*",
+  punctuationExtended: "\"'()+,-./:;<=>?[\\]_`{|}~",
 };
 let password = null;
 
@@ -59,14 +59,14 @@ function getCharset() {
   const uppercase = getById("password-uppercase");
   const numbers = getById("password-numbers");
   const punctuation = getById("password-punctuation");
-  const space = getById("password-spaces");
+  const punctuationExtended = getById("password-punctuation-extended");
 
   let charset = [];
   if (lowercase.checked) charset.push(charsets.lowercase);
   if (uppercase.checked) charset.push(charsets.uppercase);
   if (numbers.checked) charset.push(charsets.numbers);
   if (punctuation.checked) charset.push(charsets.punctuation);
-  if (space.checked) charset.push(charsets.space);
+  if (punctuationExtended.checked) charset.push(charsets.punctuationExtended);
 
   return charset.join("");
 }
@@ -101,6 +101,8 @@ function displayPassword() {
     else if (charsets.uppercase.includes(char)) className = "uppercase";
     else if (charsets.numbers.includes(char)) className = "numbers";
     else if (charsets.punctuation.includes(char)) className = "punctuation";
+    else if (charsets.punctuationExtended.includes(char))
+      className = "punctuation-extended";
     else className = null;
 
     let element;
@@ -151,7 +153,7 @@ function savePreferences() {
     ["password-uppercase", "checked"],
     ["password-numbers", "checked"],
     ["password-punctuation", "checked"],
-    ["password-spaces", "checked"],
+    ["password-punctuation-extended", "checked"],
   ]) {
     localStorage.setItem(element, JSON.stringify(getById(element)[property]));
   }
@@ -164,7 +166,7 @@ function loadPreferences() {
     ["password-uppercase", "checked", true],
     ["password-numbers", "checked", true],
     ["password-punctuation", "checked", true],
-    ["password-spaces", "checked", false],
+    ["password-punctuation-extended", "checked", false],
   ]) {
     getById(element)[property] =
       JSON.parse(localStorage.getItem(element)) ?? def;
