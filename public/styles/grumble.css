@@ -1,42 +1,36 @@
 body {
-    font-family: 'IBM Plex Sans';
-    font-size: 12pt;
-    padding: 3em;
-    box-sizing: border-box;
-    align-items: start;
-    justify-content: start;
-    background: linear-gradient(150deg, #17338c, #86136b);
-}
-
-#grumble {
-    font-size: 40pt;
-    font-weight: 500;
-    text-align: left;
-    width: min(max(25ch, 70%), 100%);
-    hyphens: none;
-    margin: 0;
-    margin-bottom: 1em;
-    user-select: none;
-}
-
-#grumble::before {
-    content: '\201e';
-    opacity: 30%;
-    margin-right: .3ch;
-}
-
-#grumble::after {
-    content: '\201c';
-    opacity: 30%;
-    margin-left: .3ch;
-}
-
-footer {
-    margin-top: auto;
-    user-select: none;
+  font-family: "IBM Plex Sans", sans-serif;
+  margin: unset;
+  padding: 3rem;
+  box-sizing: border-box;
+  text-align: left;
+  align-items: start;
+  justify-content: start;
+  background: linear-gradient(150deg, #17338c, #86136b);
+  background-attachment: fixed;
 }
 
 a {
-    text-decoration: none;
-    color: #d062b6;
+  color: #d062b6;
+}
+
+#grumble {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  max-width: 25ch;
+  margin: unset;
+}
+
+#grumble::before,
+#grumble::after {
+  opacity: 30%;
+  letter-spacing: 0.25ch;
+}
+
+#grumble::before {
+  content: "\201E";
+}
+
+#grumble::after {
+  content: "\201D";
 }
