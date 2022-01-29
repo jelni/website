@@ -1,6 +1,7 @@
 :root {
   --white: hsl(0, 0%, 100%);
   --gray-90: hsl(0, 0%, 90%);
+  --gray-75: hsl(0, 0%, 75%);
   --gray-50: hsl(0, 0%, 50%);
   --gray-15: hsl(0, 0%, 15%);
   --gray-10: hsl(0, 0%, 10%);
@@ -49,8 +50,15 @@ p {
   margin-bottom: 0.5em;
 }
 
-.big-text {
-  font-size: 16rem;
+footer {
+  color: var(--gray-75);
+  position: absolute;
+  bottom: 2em;
+}
+
+a {
+  color: var(--gray-90);
+  text-decoration: unset;
 }
 
 .progress-bar {
