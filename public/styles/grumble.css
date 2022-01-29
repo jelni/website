@@ -1,0 +1,36 @@
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  margin: unset;
+  padding: 3rem;
+  box-sizing: border-box;
+  text-align: left;
+  align-items: start;
+  justify-content: start;
+  background: linear-gradient(150deg, #17338c, #86136b);
+  background-attachment: fixed;
+}
+
+a {
+  color: #d062b6;
+}
+
+#grumble {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  max-width: 25ch;
+  margin: unset;
+}
+
+#grumble::before,
+#grumble::after {
+  opacity: 30%;
+  letter-spacing: 0.25ch;
+}
+
+#grumble::before {
+  content: "\201E";
+}
+
+#grumble::after {
+  content: "\201D";
+}
