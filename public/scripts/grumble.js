@@ -1,6 +1,12 @@
-addEventListener("load", async () => {
-  const response = await fetch("https://grumble.jelnislaw.workers.dev/");
-  const json = await response.json();
+addEventListener("load", () => {
   const grumble = document.getElementById("grumble");
-  grumble.textContent = json.grumble;
+  fetch("https://grumble.jelnislaw.workers.dev/").then(
+    async response => {
+      const json = await response.json();
+      grumble.textContent = json.grumble;
+    },
+    () => {
+      grumble.textContent = "Error";
+    }
+  );
 });
