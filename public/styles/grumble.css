@@ -24,13 +24,14 @@ a {
 #grumble::before,
 #grumble::after {
   opacity: 30%;
-  letter-spacing: 0.25ch;
 }
 
 #grumble::before {
   content: "\201E";
+  margin-right: 0.25ch;
 }
 
 #grumble::after {
   content: "\201D";
+  margin-left: 0.25ch;
 }
