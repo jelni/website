@@ -52,8 +52,8 @@ p {
 
 footer {
   color: var(--gray-75);
-  position: absolute;
-  bottom: 2em;
+  margin-top: auto;
+  padding-top: 2em;
 }
 
 a {
