@@ -16,6 +16,8 @@ html {
   hyphens: auto;
   font-variant-ligatures: none;
   user-select: text;
+  color: var(--gray-90);
+  background: var(--gray-15);
 }
 
 body {
@@ -23,8 +25,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--gray-90);
-  background: var(--gray-15);
   min-height: 100%;
   margin: 0 2rem 0;
 }
