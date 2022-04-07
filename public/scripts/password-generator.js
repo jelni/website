@@ -1,4 +1,3 @@
-const getById = document.getElementById.bind(document);
 const charsets = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -9,24 +8,30 @@ const charsets = {
 let password = null;
 
 addEventListener("load", () => {
-  const preferencesForm = getById("password-preferences");
+  const preferencesForm = document.getElementById("password-preferences");
+  loadPreferences();
   preferencesForm.addEventListener("submit", e => {
     e.preventDefault();
-    savePreferences();
-    run();
+    generatePassword(true);
   });
   preferencesForm.addEventListener("reset", e => {
     e.preventDefault();
     clearPreferences();
     loadPreferences();
   });
-  getById("password-show").addEventListener("click", showPassword);
-  getById("password-copy").addEventListener("click", copyPassword);
-  loadPreferences();
-  run(false);
+  document
+    .getElementById("save-defaults")
+    .addEventListener("click", savePreferences);
+  document
+    .getElementById("password-show")
+    .addEventListener("click", showPassword);
+  document
+    .getElementById("password-copy")
+    .addEventListener("click", copyPassword);
+  generatePassword();
 });
 
-function run(copy = true) {
+function generatePassword(copy = false) {
   const length = fixPasswordLength();
   const charset = getCharset();
   try {
@@ -39,13 +44,13 @@ function run(copy = true) {
     displayError(e);
     return;
   }
-  password = generatePassword(length, charset);
+  password = getRandomPassword(length, charset);
   if (copy) copyPassword();
   displayPassword();
   displayPasswordStats(charset);
 }
 
-function generatePassword(length, charset) {
+function getRandomPassword(length, charset) {
   const numbers = new Uint32Array(length);
   crypto.getRandomValues(numbers);
   const password = Array.from(numbers).map(n =>
@@ -55,24 +60,25 @@ function generatePassword(length, charset) {
 }
 
 function getCharset() {
-  const lowercase = getById("password-lowercase");
-  const uppercase = getById("password-uppercase");
-  const numbers = getById("password-numbers");
-  const punctuation = getById("password-punctuation");
-  const punctuationExtended = getById("password-punctuation-extended");
+  const lowercase = document.getElementById("password-lowercase");
+  const uppercase = document.getElementById("password-uppercase");
+  const numbers = document.getElementById("password-numbers");
+  const punctuation = document.getElementById("password-punctuation");
+  const punctuationExtended = document.getElementById(
+    "password-punctuation-extended"
+  );
 
-  let charset = [];
-  if (lowercase.checked) charset.push(charsets.lowercase);
-  if (uppercase.checked) charset.push(charsets.uppercase);
-  if (numbers.checked) charset.push(charsets.numbers);
-  if (punctuation.checked) charset.push(charsets.punctuation);
-  if (punctuationExtended.checked) charset.push(charsets.punctuationExtended);
-
-  return charset.join("");
+  let charset = "";
+  if (lowercase.checked) charset += charsets.lowercase;
+  if (uppercase.checked) charset += charsets.uppercase;
+  if (numbers.checked) charset += charsets.numbers;
+  if (punctuation.checked) charset += charsets.punctuation;
+  if (punctuationExtended.checked) charset += charsets.punctuationExtended;
+  return charset;
 }
 
 function showPassword() {
-  getById("password").classList.toggle("password-hidden");
+  document.getElementById("password").classList.toggle("password-hidden");
 }
 
 async function copyPassword() {
@@ -86,7 +92,7 @@ async function copyPassword() {
     }
   }
   const className = success ? "copy-success" : "copy-error";
-  const copyButton = getById("password-copy");
+  const copyButton = document.getElementById("password-copy");
   copyButton.classList.add(className);
   setTimeout(() => {
     copyButton.classList.remove(className);
@@ -115,27 +121,27 @@ function displayPassword() {
     }
     elements.push(element);
   }
-  getById("password").replaceChildren(...elements);
+  document.getElementById("password").replaceChildren(...elements);
 }
 
 function displayError(error) {
   const element = document.createElement("span");
   element.className = "error";
   element.textContent = error;
-  getById("password").replaceChildren(element);
+  document.getElementById("password").replaceChildren(element);
 }
 
 function displayPasswordStats(charset) {
   const bitsPerChar = Math.log2(charset.length);
   const entropyBits = Math.floor(password.length * bitsPerChar);
-  // for (const [requirement, category] of [[28, ""]]) {}
-  getById("charset-size").textContent = charset.length;
-  getById("password-entropy").textContent = entropyBits;
-  getById("entropy-per-char").textContent = bitsPerChar.toFixed(1);
+  document.getElementById("charset-size").textContent = charset.length;
+  document.getElementById("password-entropy").textContent = entropyBits;
+  document.getElementById("entropy-per-char").textContent =
+    bitsPerChar.toFixed(1);
 }
 
 function fixPasswordLength() {
-  const element = getById("password-length");
+  const element = document.getElementById("password-length");
   let value = element.valueAsNumber;
   const min = +element.min;
   const max = +element.max;
@@ -147,6 +153,7 @@ function fixPasswordLength() {
 }
 
 function savePreferences() {
+  fixPasswordLength();
   for (const [element, property] of [
     ["password-length", "valueAsNumber"],
     ["password-lowercase", "checked"],
@@ -155,7 +162,10 @@ function savePreferences() {
     ["password-punctuation", "checked"],
     ["password-punctuation-extended", "checked"],
   ]) {
-    localStorage.setItem(element, JSON.stringify(getById(element)[property]));
+    localStorage.setItem(
+      element,
+      JSON.stringify(document.getElementById(element)[property])
+    );
   }
 }
 
@@ -168,7 +178,7 @@ function loadPreferences() {
     ["password-punctuation", "checked", true],
     ["password-punctuation-extended", "checked", false],
   ]) {
-    getById(element)[property] =
+    document.getElementById(element)[property] =
       JSON.parse(localStorage.getItem(element)) ?? def;
   }
 }
