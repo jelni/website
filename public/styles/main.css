@@ -30,19 +30,11 @@ body {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4em;
 }
 
 h2 {
-  font-size: 4rem;
-}
-
-h3 {
-  font-size: 3rem;
-}
-
-h4 {
-  font-size: 2rem;
+  font-size: 3em;
 }
 
 p {
