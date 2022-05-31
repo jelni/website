@@ -61,10 +61,6 @@ a {
   text-decoration: unset;
 }
 
-.hidden {
-  display: none;
-}
-
 .progress-bar {
   position: fixed;
   bottom: 0;
