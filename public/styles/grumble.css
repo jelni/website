@@ -1,3 +1,9 @@
+:root {
+  --dark-blue: #17338c;
+  --purple: #86136b;
+  --pink: #d062b6;
+}
+
 body {
   font-family: "IBM Plex Sans", sans-serif;
   margin: unset;
@@ -6,19 +12,40 @@ body {
   text-align: left;
   align-items: start;
   justify-content: start;
-  background: linear-gradient(150deg, #17338c, #86136b);
+  background: linear-gradient(150deg, var(--dark-blue), var(--purple));
   background-attachment: fixed;
 }
 
 a {
-  color: #d062b6;
+  color: var(--pink);
+}
+
+button {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  padding: 1em;
+  width: 12em;
+  color: var(--pink);
+  background-color: unset;
+  box-sizing: content-box;
+  border: unset;
+  outline: var(--pink) solid 0.25em;
+  border-radius: 1em;
+  transition-property: outline-width;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+button:hover {
+  outline-width: 0.5em;
 }
 
 #grumble {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 500;
-  max-width: 25ch;
+  max-width: 30ch;
+  hyphens: auto;
   margin: unset;
+  margin-bottom: 1em;
 }
 
 #grumble::before,
