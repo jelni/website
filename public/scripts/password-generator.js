@@ -7,29 +7,27 @@ const charsets = {
 };
 let password = null;
 
-addEventListener("load", () => {
-  const preferencesForm = document.getElementById("password-preferences");
-  loadPreferences();
-  preferencesForm.addEventListener("submit", e => {
-    e.preventDefault();
-    generatePassword(true);
-  });
-  preferencesForm.addEventListener("reset", e => {
-    e.preventDefault();
-    clearPreferences();
-    loadPreferences();
-  });
-  document
-    .getElementById("save-defaults")
-    .addEventListener("click", savePreferences);
-  document
-    .getElementById("password-show")
-    .addEventListener("click", showPassword);
-  document
-    .getElementById("password-copy")
-    .addEventListener("click", copyPassword);
-  generatePassword();
+const preferencesForm = document.getElementById("password-preferences");
+loadPreferences();
+preferencesForm.addEventListener("submit", e => {
+  e.preventDefault();
+  generatePassword(true);
 });
+preferencesForm.addEventListener("reset", e => {
+  e.preventDefault();
+  clearPreferences();
+  loadPreferences();
+});
+document
+  .getElementById("save-defaults")
+  .addEventListener("click", savePreferences);
+document
+  .getElementById("password-show")
+  .addEventListener("click", showPassword);
+document
+  .getElementById("password-copy")
+  .addEventListener("click", copyPassword);
+generatePassword();
 
 function generatePassword(copy = false) {
   const length = fixPasswordLength();
