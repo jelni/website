@@ -1,7 +1,5 @@
-addEventListener("load", () => {
-  document.getElementById("reload").addEventListener("click", grumble);
-  grumble();
-});
+document.getElementById("reload").addEventListener("click", grumble);
+grumble();
 
 async function grumble() {
   const grumble = document.getElementById("grumble");
