@@ -1,64 +1,64 @@
 :root {
-  --dark-blue: #17338c;
-  --purple: #86136b;
-  --pink: #d062b6;
+    --dark-blue: #17338c;
+    --purple: #86136b;
+    --pink: #d062b6;
 }
 
 body {
-  font-family: "IBM Plex Sans", sans-serif;
-  margin: unset;
-  padding: 3rem;
-  box-sizing: border-box;
-  text-align: left;
-  align-items: start;
-  justify-content: start;
-  background: linear-gradient(150deg, var(--dark-blue), var(--purple));
-  background-attachment: fixed;
+    font-family: "IBM Plex Sans", sans-serif;
+    margin: unset;
+    padding: 3rem;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: start;
+    justify-content: start;
+    background: linear-gradient(150deg, var(--dark-blue), var(--purple));
+    background-attachment: fixed;
 }
 
 a {
-  color: var(--pink);
+    color: var(--pink);
 }
 
 button {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  padding: 1em;
-  width: 12em;
-  color: var(--pink);
-  background-color: unset;
-  box-sizing: content-box;
-  border: unset;
-  outline: var(--pink) solid 0.25em;
-  border-radius: 1em;
-  transition-property: outline-width;
-  transition-duration: 0.25s;
-  transition-timing-function: ease-in-out;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    padding: 1em;
+    width: 12em;
+    color: var(--pink);
+    background-color: unset;
+    box-sizing: content-box;
+    border: unset;
+    outline: var(--pink) solid 0.25em;
+    border-radius: 1em;
+    transition-property: outline-width;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
 }
 
 button:hover {
-  outline-width: 0.5em;
+    outline-width: 0.5em;
 }
 
 #grumble {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 500;
-  max-width: 30ch;
-  hyphens: auto;
-  margin: unset;
-  margin-bottom: 1em;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    max-width: 30ch;
+    hyphens: auto;
+    margin: unset;
+    margin-bottom: 1em;
 }
 
 #grumble::before,
 #grumble::after {
-  opacity: 30%;
+    opacity: 30%;
 }
 
 #grumble::before {
-  content: "\201E";
-  margin-right: 0.25ch;
+    content: "\201E";
+    margin-right: 0.25ch;
 }
 
 #grumble::after {
-  content: "\201D";
-  margin-left: 0.25ch;
+    content: "\201D";
+    margin-left: 0.25ch;
 }
