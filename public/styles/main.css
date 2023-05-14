@@ -55,6 +55,7 @@ a {
 
 .progress-bar {
   position: fixed;
+  left: 0;
   bottom: 0;
   height: 0.25rem;
   background: var(--gray-50);

@@ -8,8 +8,7 @@ addEventListener("resize", updateProgressBar);
 updateProgressBar();
 
 function updateProgressBar() {
-  progressBar.style.display =
-    html.scrollHeight > html.clientHeight ? null : "none";
-  progressBar.style.width =
-    (html.scrollTop / (html.scrollHeight - html.clientHeight)) * 100 + "%";
+    progressBar.hidden = html.scrollHeight <= html.clientHeight;
+    progressBar.style.width =
+        (html.scrollTop / (html.scrollHeight - html.clientHeight)) * 100 + "%";
 }
