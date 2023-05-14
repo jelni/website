@@ -1,3 +1,23 @@
+.subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25em;
+    margin-block: 1em;
+
+    > img {
+        border-radius: 50%;
+        width: 1em;
+        height: 1em;
+
+        animation-duration: 10s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-name: rotate;
+    }
+}
+
 .social-icons {
     display: flex;
     justify-content: center;
@@ -30,11 +50,13 @@
         padding: 1rem;
         border-radius: 2rem;
 
-        > h3 {
+        > div {
             display: flex;
             align-items: center;
             gap: 0.25em;
             margin: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
         }
 
         > p {
@@ -52,5 +74,11 @@
 
     &:hover {
         filter: invert(0.75);
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(1turn);
     }
 }
