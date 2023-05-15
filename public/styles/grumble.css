@@ -4,14 +4,20 @@
     --pink: #d062b6;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    font-family: "IBM Plex Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
     margin: unset;
     padding: 3rem;
     box-sizing: border-box;
     text-align: left;
-    align-items: start;
-    justify-content: start;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: hsl(0, 0%, 90%);
     background: linear-gradient(150deg, var(--dark-blue), var(--purple));
     background-attachment: fixed;
 }
@@ -37,6 +43,12 @@ button {
 
 button:hover {
     outline-width: 0.5em;
+}
+
+footer {
+    color: hsl(0, 0%, 75%);
+    margin-top: auto;
+    padding-top: 2em;
 }
 
 #grumble {
