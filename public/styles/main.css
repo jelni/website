@@ -1,11 +1,9 @@
 :root {
-    --white: hsl(0, 0%, 100%);
     --gray-90: hsl(0, 0%, 90%);
     --gray-75: hsl(0, 0%, 75%);
     --gray-50: hsl(0, 0%, 50%);
     --gray-15: hsl(0, 0%, 15%);
     --gray-10: hsl(0, 0%, 10%);
-    --black: hsl(0, 0%, 0%);
 }
 
 html {
@@ -14,7 +12,7 @@ html {
     font-family: "Roboto", sans-serif;
     text-align: center;
     hyphens: auto;
-    font-variant-ligatures: none;
+    text-underline-position: under;
     user-select: text;
     color: var(--gray-90);
     background: var(--gray-15);
@@ -39,7 +37,7 @@ p {
 }
 
 a {
-    color: var(--gray-90);
+    color: unset;
     text-decoration: unset;
 
     &:hover {
