@@ -41,11 +41,12 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-}
 
-.social-icons > a {
-    width: 2rem;
-    height: 2rem;
+    .svg-icon {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
 .project-cards {
@@ -76,12 +77,12 @@
             margin: 0.5rem;
         }
     }
-}
 
-.github-link {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
+    .svg-icon {
+        display: block;
+        width: 1em;
+        height: 1em;
+    }
 }
 
 @keyframes rotate {
