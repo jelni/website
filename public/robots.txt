@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jelnislaw.ml/sitemap.txt
+Sitemap: https://jelnislaw.web.app/sitemap.txt
