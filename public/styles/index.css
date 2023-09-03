@@ -68,7 +68,7 @@
     > div {
       display: flex;
       align-items: center;
-      gap: 0.25em;
+      gap: 0.5em;
       margin: 0.5rem;
       font-size: 1.25rem;
       font-weight: bold;
