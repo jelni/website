@@ -8,6 +8,8 @@ const charsets = {
 
 let password = null;
 
+let buttonActionTimeout = null;
+
 const preferences = {
   form: document.getElementById("password-preferences"),
   autoGenerate: document.getElementById("auto-generate"),
@@ -106,11 +108,11 @@ async function copyPassword() {
       success = false;
     }
   }
-  const className = success ? "copy-success" : "copy-error";
   const copyButton = document.getElementById("password-copy");
-  copyButton.classList.add(className);
-  setTimeout(() => {
-    copyButton.classList.remove(className);
+  copyButton.setAttribute("highlight", success ? "success" : "error");
+  if (buttonActionTimeout !== null) clearTimeout(buttonActionTimeout);
+  buttonActionTimeout = setTimeout(() => {
+    copyButton.removeAttribute("highlight");
   }, 1_000);
 }
 
