@@ -8,15 +8,24 @@ const charsets = {
 let password = null;
 
 const preferencesForm = document.getElementById("password-preferences");
+const settingsEls = {
+  autoGen: document.getElementById("auto-generate"),
+  autoCopy: document.getElementById("auto-copy")
+};
 loadPreferences();
 preferencesForm.addEventListener("submit", e => {
   e.preventDefault();
-  generatePassword(true);
+  generatePassword(settingsEls.autoCopy.checked);
 });
 preferencesForm.addEventListener("reset", e => {
   e.preventDefault();
   clearPreferences();
   loadPreferences();
+});
+preferencesForm.addEventListener("change", e => {
+  e.preventDefault();
+  if (settingsEls.autoGen.checked)
+    generatePassword(settingsEls.autoCopy.checked)
 });
 document
   .getElementById("save-defaults")
@@ -159,6 +168,8 @@ function savePreferences() {
     ["password-numbers", "checked"],
     ["password-punctuation", "checked"],
     ["password-punctuation-extended", "checked"],
+    ["auto-generate", "checked"],
+    ["auto-copy", "checked"]
   ]) {
     localStorage.setItem(
       element,
@@ -175,6 +186,8 @@ function loadPreferences() {
     ["password-numbers", "checked", true],
     ["password-punctuation", "checked", true],
     ["password-punctuation-extended", "checked", false],
+    ["auto-generate", "checked", false],
+    ["auto-copy", "checked", true]
   ]) {
     document.getElementById(element)[property] =
       JSON.parse(localStorage.getItem(element)) ?? def;
