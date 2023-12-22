@@ -5,37 +5,45 @@ const charsets = {
   punctuation: "!@#$%^&*",
   punctuationExtended: "\"'()+,-./:;<=>?[\\]_`{|}~",
 };
+
 let password = null;
 
-const preferencesForm = document.getElementById("password-preferences");
-const settingsEls = {
-  autoGen: document.getElementById("auto-generate"),
-  autoCopy: document.getElementById("auto-copy")
+const preferences = {
+  form: document.getElementById("password-preferences"),
+  autoGenerate: document.getElementById("auto-generate"),
+  autoCopy: document.getElementById("auto-copy"),
 };
+
 loadPreferences();
-preferencesForm.addEventListener("submit", e => {
+
+preferences.form.addEventListener("submit", (e) => {
   e.preventDefault();
-  generatePassword(settingsEls.autoCopy.checked);
+  generatePassword(preferences.autoCopy.checked);
 });
-preferencesForm.addEventListener("reset", e => {
+
+preferences.form.addEventListener("reset", (e) => {
   e.preventDefault();
   clearPreferences();
   loadPreferences();
 });
-preferencesForm.addEventListener("change", e => {
-  e.preventDefault();
-  if (settingsEls.autoGen.checked)
-    generatePassword(settingsEls.autoCopy.checked)
+
+preferences.form.addEventListener("change", () => {
+  if (preferences.autoGenerate.checked)
+    generatePassword(preferences.autoCopy.checked);
 });
+
 document
   .getElementById("save-defaults")
   .addEventListener("click", savePreferences);
+
 document
   .getElementById("password-show")
   .addEventListener("click", showPassword);
+
 document
   .getElementById("password-copy")
   .addEventListener("click", copyPassword);
+
 generatePassword();
 
 function generatePassword(copy = false) {
@@ -60,8 +68,8 @@ function generatePassword(copy = false) {
 function getRandomPassword(length, charset) {
   const numbers = new Uint32Array(length);
   crypto.getRandomValues(numbers);
-  const password = Array.from(numbers).map(n =>
-    charset.charAt(n % charset.length)
+  const password = Array.from(numbers).map((n) =>
+    charset.charAt(n % charset.length),
   );
   return password.join("");
 }
@@ -72,7 +80,7 @@ function getCharset() {
   const numbers = document.getElementById("password-numbers");
   const punctuation = document.getElementById("password-punctuation");
   const punctuationExtended = document.getElementById(
-    "password-punctuation-extended"
+    "password-punctuation-extended",
   );
 
   let charset = "";
@@ -169,11 +177,11 @@ function savePreferences() {
     ["password-punctuation", "checked"],
     ["password-punctuation-extended", "checked"],
     ["auto-generate", "checked"],
-    ["auto-copy", "checked"]
+    ["auto-copy", "checked"],
   ]) {
     localStorage.setItem(
       element,
-      JSON.stringify(document.getElementById(element)[property])
+      JSON.stringify(document.getElementById(element)[property]),
     );
   }
 }
@@ -187,7 +195,7 @@ function loadPreferences() {
     ["password-punctuation", "checked", true],
     ["password-punctuation-extended", "checked", false],
     ["auto-generate", "checked", false],
-    ["auto-copy", "checked", true]
+    ["auto-copy", "checked", true],
   ]) {
     document.getElementById(element)[property] =
       JSON.parse(localStorage.getItem(element)) ?? def;
