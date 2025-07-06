@@ -29,17 +29,6 @@
         "destination": "/10GB",
         "type": 307
       }
-    ],
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=86400"
-          }
-        ]
-      }
     ]
   }
 }
