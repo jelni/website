@@ -38,6 +38,11 @@ body {
   margin-block: 0;
 }
 
+h1,
+h2 {
+  text-align: center;
+}
+
 h1 {
   font-size: 4em;
   margin-block: 0.25em;
