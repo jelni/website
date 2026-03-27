@@ -5,6 +5,21 @@
     "trailingSlash": false,
     "redirects": [
       {
+        "source": "/.well-known/webfinger",
+        "destination": "https://gts.jel.gay/.well-known/webfinger",
+        "type": 308
+      },
+      {
+        "source": "/.well-known/nodeinfo",
+        "destination": "https://gts.jel.gay/.well-known/nodeinfo",
+        "type": 308
+      },
+      {
+        "source": "/.well-known/host-meta",
+        "destination": "https://gts.jel.gay/.well-known/host-meta",
+        "type": 308
+      },
+      {
         "source": "/kalkulator",
         "destination": "/calculator",
         "type": 308
