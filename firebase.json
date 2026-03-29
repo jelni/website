@@ -20,6 +20,11 @@
         "type": 308
       },
       {
+        "source": "/.well-known/matrix/:path",
+        "destination": "https://matrix.jel.gay/.well-known/matrix/:path",
+        "type": 308
+      },
+      {
         "source": "/kalkulator",
         "destination": "/calculator",
         "type": 308
